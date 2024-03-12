@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 
 
 class DownloadPage():
+    """
+    Страница скачивания приложеняи СБис
+    """
 
     section = {
         'СБИС Отчетность': '[data-id="ereport"]',
@@ -21,8 +24,16 @@ class DownloadPage():
         self.driver = driver
 
     def select_section(self, name):
+        """
+        Переход на нужный раздел
+        :param name: название раздела
+        """
         self.driver.find_element(By.CSS_SELECTOR, self.section[name]).click()
 
     def check_select_section(self, name):
+        """
+        Проверка выбранного раздела
+        :param name: название раздела
+        """
         elem = self.driver.find_element(By.CSS_SELECTOR, self.section[name])
         assert elem.value_of_css_property('border-left-color') == 'rgba(255, 112, 51, 1)', 'Раздел не выбран'
