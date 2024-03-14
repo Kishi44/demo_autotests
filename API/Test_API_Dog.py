@@ -8,6 +8,9 @@ class TestAPIDogs:
     url = 'https://dog.ceo/api/'
 
     def test_get_random_dog_image(self):
+        """
+        Проверяем, что получили изображение в ответе
+        """
         res = requests.get(f'{self.url}breeds/image/random')
         with allure.step("Проверяем код ответа"):
             assert res.status_code == 200, f'Не верный код ответаб получен ответ {res.status_code}'
@@ -23,6 +26,10 @@ class TestAPIDogs:
         "elkhound"
     ])
     def test_get_certain_breed_image(self, breed):
+        """
+        Проверяем, что получили изображение конкретной запрошеной пароды
+        :param breed:
+        """
         res = requests.get(f'{self.url}breed/{breed}/images/random')
         with allure.step("Проверяем код ответа"):
             assert res.status_code == 200, f'Не верный код ответаб получен ответ {res.status_code}'

@@ -44,6 +44,11 @@ class TestSpaseX:
                   })
     ])
     def test_capsules_inf(self, capsule, result):
+        """
+        Сравниваем данные по конкретнйо капсуле с эталоном
+        :param capsule:
+        :param result:
+        """
         params = {'capsule_serial': capsule}
         res = requests.get(self.url, params=params)
         with allure.step("Сравнваем данные в ответе с эталоном"):
